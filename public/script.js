@@ -40,8 +40,35 @@ const appendAllItemNames = (items) => {
   }
 }
 
-
 $('#items-list').on('click', '#show-more', function(e) {
-
   $(e.target).parent().find('#details').removeClass('hide')
+})
+
+// const appendItem = (item) => {
+//   $('#items-list').append(
+//
+//   )
+// }
+
+const postItem = (item) => {
+  const itemName = $('#name').val();
+  const reason = $('#reason').val();
+  const cleanliness = $('#cleanliness').val();
+
+  fetch('/api/v1/items', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({name: itemName, reason: reason, cleanliness: cleanliness})
+  })
+  .then(res => res.json())
+  .then( data => {
+    appendItemName(data.id)
+  })
+  .catch(error => console.log('Error posting link: ', error))
+}
+
+$('#add-new').on('click', (e) => {
+  e.preventDefault();
+
+  postItem()
 })

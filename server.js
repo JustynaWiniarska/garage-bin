@@ -43,7 +43,11 @@ app.get('/api/v1/items/:id', (request, response) => {
 });
 
 app.post('/api/v1/items', (request, response) => {
-  const newItem = request.body;
+  const newItem = {
+    name: request.body.name,
+    reason: request.body.reason,
+    cleanliness: request.body.cleanliness
+  }
 
   for(let requiredParameter of ['name']) {
     if (!newItem[requiredParameter]) {
@@ -53,9 +57,7 @@ app.post('/api/v1/items', (request, response) => {
     }
   }
 
-//************ ID causing issues in POST******************
-
-  database('items').insert(newItem, 'id')
+  database('items').insert(newItem, '*')
     .then(item => {
       response.status(201).json({ id: item[0] })
     })
