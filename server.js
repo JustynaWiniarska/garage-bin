@@ -16,7 +16,6 @@ app.get('/', (request, response) => {
   response.sendFile(__dirname + '/index.html')
 });
 
-
 app.get('/api/v1/items', (request, response) => {
   database('items').select()
   .then(items => {
@@ -41,6 +40,29 @@ app.get('/api/v1/items/:id', (request, response) => {
     .catch(error => {
       response.status(500).json(error)
     });
+});
+
+
+app.post('/api/v1/items', (request, response) => {
+  const newItem = request.body;
+
+  for(let requiredParameter of ['name']) {
+    if (!newItem[requiredParameter]) {
+      return response.status(422).json({
+        error: `Missing required parameter ${requiredParameter}`
+      });
+    }
+  }
+
+//************ ID causing issues in POST******************
+
+  database('items').insert(newItem, 'id')
+    .then(item => {
+      response.status(201).json({ id: item[0] })
+    })
+    .catch(error => {
+      response.status(500).json({ error })
+    })
 });
 
 
