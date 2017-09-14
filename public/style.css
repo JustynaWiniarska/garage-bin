@@ -1,5 +1,6 @@
 body {
   text-align: center;
+  margin-bottom: 50px;
 }
 
 .img-container {
@@ -24,4 +25,8 @@ body {
   margin: auto;
   padding: 10px 20px 20px 20px;
   border: 2px solid #966764;
+}
+
+.hide {
+  display: none
 }

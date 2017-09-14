@@ -23,21 +23,23 @@
         <form class="add-item">
           <h3>Add a New Item</h3>
           <p>Name of the Item</p>
-          <input type="text" placeholder="Item Name"/>
+          <input type="text" placeholder="Item Name" id="name"/>
           <p>Why are you storing this Item?</p>
-          <input type="text" placeholder="Reason Why"/>
+          <input type="text" placeholder="Reason Why" id="reason"/>
           <p>How clean is your Item?</p>
-            <select>
+            <select id="cleanliness">
               <option value="sparkling">Sparkling</option>
               <option value="dusty">Dusty</option>
               <option value="rancid">Rancid</option>
             </select>
-          <button>Add a new Item</button>
+          <button id="add-new">Add a new Item</button>
         </form>
 
         <h3>List of Items</h3>
         <p>No. of Items:</p>
         <div id="items-list"></div>
+        <button class="sort">Sort Items</button>
+
       </div>
     </main>
 
