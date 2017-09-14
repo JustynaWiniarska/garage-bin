@@ -18,8 +18,21 @@
       </div>
 
       <div class="garage-items hidden" id="items">
-        <h2>My Garage Items:</h2>
-        <button>Add a new Item</button>
+        <h2>My Garage Items</h2>
+        <form class="add-item">
+          <h3>Add a New Item</h3>
+          <p>Name of the Item</p>
+          <input type="text" placeholder="Item Name"/>
+          <p>Why are you storing this Item?</p>
+          <input type="text" placeholder="Reason Why"/>
+          <p>How clean is your Item?</p>
+            <select>
+              <option value="sparkling">Sparkling</option>
+              <option value="dusty">Dusty</option>
+              <option value="rancid">Rancid</option>
+            </select>
+          <button>Add a new Item</button>
+        </form>
 
       </div>
     </main>
