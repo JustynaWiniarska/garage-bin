@@ -42,7 +42,6 @@ app.get('/api/v1/items/:id', (request, response) => {
     });
 });
 
-
 app.post('/api/v1/items', (request, response) => {
   const newItem = request.body;
 
@@ -64,8 +63,6 @@ app.post('/api/v1/items', (request, response) => {
       response.status(500).json({ error })
     })
 });
-
-
 
 app.listen(app.get('port'), () => {
   console.log(`The App is running on ${app.get('port')}.`);
