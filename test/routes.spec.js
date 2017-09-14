@@ -82,6 +82,16 @@ describe('Client Routes', () => {
           done();
         })
       })
+
+      it('should return an error if a requested item does not exist', (done) => {
+      chai.request(server)
+        .get('/api/v1/items/100')
+        .end((error, response) => {
+          response.should.have.status(404);
+          response.body.error.should.equal('Could not find item with id of 100');
+          done();
+        });
+    });
 })
 
 
