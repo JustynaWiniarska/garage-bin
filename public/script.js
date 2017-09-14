@@ -72,4 +72,4 @@ $('#add-new').on('click', (e) => {
 // const findItemNames = () => {
 //   const foundItems = $('#items-list').find('.namename')
   // console.log(foundItems)
-}
+// }
