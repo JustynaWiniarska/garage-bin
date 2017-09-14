@@ -126,7 +126,21 @@ describe('Client Routes', () => {
               })
             })
           })
-})
+
+          it('should not add an with missing data', (done) => {
+                chai.request(server)
+                .post('/api/v1/items')
+                .send({
+                  reason: 'Storage'
+                })
+                .end((error, response) => {
+                  response.should.have.status(422);
+                  response.body.error.should.equal('Missing required parameter name');
+                  done();
+                })
+              })
+
+        })
 
   })
 })
