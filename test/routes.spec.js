@@ -32,6 +32,33 @@ describe('Client Routes', () => {
   });
 
 
-  
+  describe('API Routes', () => {
+  //   before((done) => {
+  //   database.migrate.latest()
+  //     .then(() => done())
+  //     .catch(error => console.log(error));
+  // });
+  //
+  // beforeEach((done) => {
+  //   database.seed.run()
+  //     .then(() => done())
+  //     .catch(error => console.log(error));
+  // });
 
+
+    describe('GET /api/v1/items', () => {
+        it('should return all of the items', (done) => {
+          chai.request(server)
+            .get('/api/v1/items')
+            .end((error, response) => {
+              response.should.have.status(200);
+              response.should.be.json;
+              response.body.should.be.a('array');
+
+              done();
+            });
+        });
+    })
+
+  })
 })
