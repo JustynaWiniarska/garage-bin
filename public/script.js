@@ -2,7 +2,7 @@ $(document).ready(() => {
   fetchAllItems();
 })
 
-
+// Garage door opening/closing:
 $('#door').on('click', () => {
   $('.img-container').fadeOut();
   $('.garage-items').fadeIn(4000);
@@ -23,10 +23,16 @@ const fetchAllItems = () => {
   .catch(error => console.log('Error fetching items: ', error))
 }
 
-const appendItemNames = (folders) => {
-  folders.map(folder => {
+const appendItemNames = (items) => {
+  items.map(item => {
      $('#items-list').append(
-      `<h4>${folder.name}</h4>`
+      `<button id='show-more'>${item.name}</button>`
      )
   })
 }
+
+$('#items-list').on('click', '#show-more', () => {
+  $('#item-details').append(
+    `<div>Details</div>`
+  )
+})
