@@ -5,7 +5,7 @@ $(document).ready(() => {
 // Garage door opening/closing:
 $('#door').on('click', () => {
   $('.img-container').fadeOut();
-  $('.garage-items').fadeIn(4000);
+  $('.garage-items').fadeIn(1000);
 })
 
 $('#close-door').on('click', () => {
@@ -18,7 +18,6 @@ const fetchAllItems = () => {
   fetch('/api/v1/items')
   .then(res => res.json())
   .then(data => {
-    console.log(data)
     appendAllItemNames(data)
   })
   .catch(error => console.log('Error fetching items: ', error))
@@ -26,7 +25,12 @@ const fetchAllItems = () => {
 
 const appendItemName = (item) => {
   $('#items-list').append(
-   `<button id='show-more'>${item.name}</button>`
+   `<button id='show-more'>${item.name}</button>
+   <div id="details" class="hide">
+    <p>Reason for storing: ${item.reason}</p>
+    <p>Level of cleanliness: ${item.cleanliness}</p>
+   </div>
+   `
   )
 }
 
@@ -36,28 +40,8 @@ const appendAllItemNames = (items) => {
   }
 }
 
-const fetchOneItem = (id) => {
-  fetch(`/api/v1/items/${id}`)
-    .then(res => res.json())
-    .then(item => {
-      console.log(item)
-      appendItemDetails(item)
-    })
-}
 
-const appendItemDetails = (item) => {
-  $('#item-details').empty();
-  $('#item-details').append(
-    `<div>
-      <p>${item.reason}</p>
-      <p>${item.cleanliness}</p>
-    </div>
-    `
-  )
-  console.log('reason',  item.reason)
-}
+$('#items-list').on('click', '#show-more', function(e) {
 
-
-$('#items-list').on('click', '#show-more', (id) => {
-  fetchOneItem(id)
+  $(e.target).parent().find('#details').removeClass('hide')
 })
