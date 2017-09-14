@@ -18,21 +18,46 @@ const fetchAllItems = () => {
   fetch('/api/v1/items')
   .then(res => res.json())
   .then(data => {
-    appendItemNames(data)
+    console.log(data)
+    appendAllItemNames(data)
   })
   .catch(error => console.log('Error fetching items: ', error))
 }
 
-const appendItemNames = (items) => {
-  items.map(item => {
-     $('#items-list').append(
-      `<button id='show-more'>${item.name}</button>`
-     )
-  })
+const appendItemName = (item) => {
+  $('#items-list').append(
+   `<button id='show-more'>${item.name}</button>`
+  )
 }
 
-$('#items-list').on('click', '#show-more', () => {
+const appendAllItemNames = (items) => {
+  for (let i=0; i<items.length; i++){
+    appendItemName(items[i])
+  }
+}
+
+const fetchOneItem = (id) => {
+  fetch(`/api/v1/items/${id}`)
+    .then(res => res.json())
+    .then(item => {
+      console.log(item)
+      appendItemDetails(item)
+    })
+}
+
+const appendItemDetails = (item) => {
+  $('#item-details').empty();
   $('#item-details').append(
-    `<div>Details</div>`
+    `<div>
+      <p>${item.reason}</p>
+      <p>${item.cleanliness}</p>
+    </div>
+    `
   )
+  console.log('reason',  item.reason)
+}
+
+
+$('#items-list').on('click', '#show-more', (id) => {
+  fetchOneItem(id)
 })
