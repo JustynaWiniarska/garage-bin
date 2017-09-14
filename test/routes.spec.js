@@ -84,16 +84,49 @@ describe('Client Routes', () => {
       })
 
       it('should return an error if a requested item does not exist', (done) => {
-      chai.request(server)
-        .get('/api/v1/items/100')
-        .end((error, response) => {
-          response.should.have.status(404);
-          response.body.error.should.equal('Could not find item with id of 100');
-          done();
+        chai.request(server)
+          .get('/api/v1/items/100')
+          .end((error, response) => {
+            response.should.have.status(404);
+            response.body.error.should.equal('Could not find item with id of 100');
+            done();
+          });
         });
-    });
-})
+      })
 
+
+      describe('POST /api/v1/items', () => {
+          it('should add a new item', (done) => {
+            chai.request(server)
+            .post('/api/v1/items')
+            .send({
+              name: 'potatoes',
+              reason: 'Someone forgot',
+              cleanliness: 'Rancid'
+            })
+            .end((error, response) => {
+              response.should.have.status(201);
+              response.body.should.be.a('object');
+              response.body.id.should.have.property('name');
+              response.body.id.name.should.equal('potatoes');
+              response.body.id.should.have.property('reason');
+              response.body.id.reason.should.equal('Someone forgot');
+              response.body.id.should.have.property('cleanliness');
+              response.body.id.cleanliness.should.equal('Rancid');
+              chai.request(server)
+              .get('/api/v1/items')
+              .end((error, response) => {
+                response.should.have.status(200);
+                response.should.be.json;
+                response.body.should.be.a('array');
+                response.body.length.should.equal(5);
+                response.body[4].should.have.property('name');
+                response.body[4].name.should.equal('potatoes');
+                done();
+              })
+            })
+          })
+})
 
   })
 })
