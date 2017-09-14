@@ -1,6 +1,5 @@
 $(document).ready(() => {
   fetchAllItems();
-  findItemNames()
 })
 
 // Garage door opening/closing:
@@ -70,13 +69,7 @@ $('#add-new').on('click', (e) => {
 })
 
 //sorting items:
-const findItemNames = () => {
-  const foundItems = $('#items-list').find('.namename')
-  console.log(foundItems)
+// const findItemNames = () => {
+//   const foundItems = $('#items-list').find('.namename')
+  // console.log(foundItems)
 }
-
-// $('.sort').on('click', () => {
-//   console.log(itemNames)
-//   let itemNames = []
-//  // itemNames.push(items[i])
-// })

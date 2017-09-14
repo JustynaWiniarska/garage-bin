@@ -69,3 +69,5 @@ app.post('/api/v1/items', (request, response) => {
 app.listen(app.get('port'), () => {
   console.log(`The App is running on ${app.get('port')}.`);
 });
+
+module.exports = app;
