@@ -1,0 +1,27 @@
+body {
+  text-align: center;
+}
+
+.img-container {
+  width: 80%;
+  margin: auto;
+  margin-top: 30px;
+}
+
+.door-img {
+  width: 100%
+}
+
+.hidden {
+  display: none;
+}
+
+/*form*/
+.add-item {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  margin: auto;
+  padding: 10px 20px 20px 20px;
+  border: 2px solid #966764;
+}
