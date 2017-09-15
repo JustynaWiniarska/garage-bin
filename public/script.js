@@ -63,7 +63,12 @@ const postItem = (item) => {
 }
 
 $('#add-new').on('click', (e) => {
+  const itemName = $('#name');
+  const reason = $('#reason');
+
   e.preventDefault();
 
-  postItem()
+  postItem();
+  itemName.val('');
+  reason.val('');
 })
