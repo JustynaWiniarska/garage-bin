@@ -24,8 +24,8 @@ const fetchAllItems = () => {
 
 const appendItemName = (item) => {
   $('#items-list').append(
-   `<div>
-      <button id='show-more' class="item">${item.name}</button>
+   `<div class="garage-item">
+      <button name="${item.name}" id='show-more' class="item">${item.name}</button>
       <div id="details" class="hide">
         <p><b>Reason for storing:</b> ${item.reason}</p>
         <p><b>Level of cleanliness:</b> ${item.cleanliness}</p>
@@ -41,17 +41,14 @@ const appendAllItemNames = (items) => {
     appendItemName(items[i])
     counter ++
   }
-  console.log('counter', counter)
   countNumber(counter)
 }
 
 const countNumber = (No) => {
-
   $('#number').append(
     `<p>${No}</p>`
   )
 }
-
 
 
 $('#items-list').on('click', '#show-more', function(e) {
@@ -84,4 +81,19 @@ $('#add-new').on('click', (e) => {
   postItem();
   itemName.val('');
   reason.val('');
+})
+
+//sort alphabetically
+const sortAlphabetically = () => {
+  // const items = $('.garage-item')
+  const items = $('#items-list').find('.garage-item').get()
+  // ********************* not working ******************
+  console.log(items)
+
+
+
+}
+
+$('#sort').on('click', () => {
+  sortAlphabetically()
 })
