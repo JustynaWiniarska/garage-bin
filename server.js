@@ -63,7 +63,7 @@ app.post('/api/v1/items', (request, response) => {
     })
     .catch(error => {
       response.status(500).json({ error })
-    })
+  })
 });
 
 app.listen(app.get('port'), () => {

@@ -2,31 +2,32 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Garage Bin</title>
+    <title>GARAGE BIN</title>
     <link rel="stylesheet" type="text/css" href="normalize.css">
     <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Architects+Daughter|Lato:300,400,700|The+Girl+Next+Door" rel="stylesheet">
   </head>
   <body>
     <header>
       <h1>Garage Bin</h1>
-      <p>An App that tracks all your Garage Items</p>
+      <p class='slogan'>An App that tracks all your Garage Items</p>
     </header>
     <main>
       <div class="img-container" id="door">
         <img class="door-img" src="garage-door.png">
-        <p>Click on the door, to see your inventory</p>
+        <p class="instruction">Click on the door to open, and see your Inventory</p>
       </div>
 
       <div class="garage-items hidden" id="items">
         <button id="close-door">Close the Garage Door</button>
-        <h2>My Garage Items</h2>
+
         <form class="add-item">
           <h3>Add a New Item</h3>
-          <p>Name of the Item</p>
+          <p class="label">Name of the Item</p>
           <input type="text" placeholder="Item Name" id="name"/>
-          <p>Why are you storing this Item?</p>
+          <p class="label">Why are you storing this Item?</p>
           <input type="text" placeholder="Reason Why" id="reason"/>
-          <p>How clean is your Item?</p>
+          <p class="label">How clean is your Item?</p>
             <select id="cleanliness">
               <option value="sparkling">Sparkling</option>
               <option value="dusty">Dusty</option>
@@ -35,15 +36,11 @@
           <button id="add-new">Add a new Item</button>
         </form>
 
-        <h3>List of Items</h3>
-        <p>No. of Items:</p>
+        <h3>List of All Garage Items</h3>
         <div id="items-list"></div>
-        <button class="sort">Sort Items</button>
 
       </div>
     </main>
-
-
   </body>
   <script>window.jQuery || document.write('<script src="jquerymin.js"><\/script>')</script>
   <script src="script.js"></script>
