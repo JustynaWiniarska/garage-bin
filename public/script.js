@@ -5,7 +5,7 @@ $(document).ready(() => {
 // Garage door opening/closing:
 $('#door').on('click', () => {
   $('.img-container').fadeOut();
-  $('.garage-items').fadeIn(1000);
+  $('.garage-items').fadeIn(3000);
 })
 
 $('#close-door').on('click', () => {
@@ -25,10 +25,10 @@ const fetchAllItems = () => {
 const appendItemName = (item) => {
   $('#items-list').append(
    `<div>
-      <button id='show-more' class='namename'>${item.name}</button>
+      <button id='show-more' class="item">${item.name}</button>
       <div id="details" class="hide">
-        <p>Reason for storing: ${item.reason}</p>
-        <p>Level of cleanliness: ${item.cleanliness}</p>
+        <p><b>Reason for storing:</b> ${item.reason}</p>
+        <p><b>Level of cleanliness:</b> ${item.cleanliness}</p>
      </div>
     </div>
    `
@@ -67,9 +67,3 @@ $('#add-new').on('click', (e) => {
 
   postItem()
 })
-
-//sorting items:
-// const findItemNames = () => {
-//   const foundItems = $('#items-list').find('.namename')
-  // console.log(foundItems)
-// }

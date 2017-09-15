@@ -1,6 +1,26 @@
 body {
   text-align: center;
   margin-bottom: 50px;
+  font-family: 'Lato', sans-serif;
+}
+
+button, input {
+  font-family: 'Lato', sans-serif;
+  outline: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+h1 {
+  font-family: 'Architects Daughter', cursive;
+  text-transform: capitalize;
+}
+
+.slogan {
+  font-family: 'The Girl Next Door', cursive;
+  font-size: 26px;
 }
 
 .img-container {
@@ -13,6 +33,11 @@ body {
   width: 100%
 }
 
+.instruction {
+  font-family: 'Architects Daughter', cursive;
+  font-size: 20px;
+}
+
 .hidden {
   display: none;
 }
@@ -23,6 +48,7 @@ body {
   flex-direction: column;
   width: 60%;
   margin: auto;
+  margin-top: 40px;
   padding: 10px 20px 20px 20px;
   border: 2px solid #966764;
 }
@@ -32,7 +58,50 @@ body {
 }
 
 #close-door {
-  height: 35px;
+  height: 40px;
+  width: 200px;
+  background-color: #e2c57a;
+  border: 2px solid #966764;
+  padding: 5px;
+}
+
+.label {
+  margin-bottom: 5px;
+}
+
+#name, #reason {
+  width: 90%;
+  margin: auto;
+}
+
+#name, #reason, #cleanliness {
+  height: 30px;
+  padding-left: 15px;
+  border: 1px solid #966764;
+}
+
+#cleanliness, #add-new {
+  width: 50%;
+  height: 30px;
+  margin: auto;
+}
+
+#add-new {
+  margin-top: 20px;
+  height: 40px;
   background-color: #f2ead5;
   border: 2px solid #966764;
+}
+
+.item {
+  margin: 8px;
+  width: 200px;
+  padding: 10px;
+  border: 1px solid #657d79;
+  background-color: #b9ccc8;
+
+}
+
+.item:focus {
+  outline: 2px solid #657d79;
 }
