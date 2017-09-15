@@ -36,10 +36,23 @@ const appendItemName = (item) => {
 }
 
 const appendAllItemNames = (items) => {
+  let counter = 0
   for (let i=0; i<items.length; i++){
     appendItemName(items[i])
+    counter ++
   }
+  console.log('counter', counter)
+  countNumber(counter)
 }
+
+const countNumber = (No) => {
+
+  $('#number').append(
+    `<p>${No}</p>`
+  )
+}
+
+
 
 $('#items-list').on('click', '#show-more', function(e) {
   $(e.target).parent().find('#details').toggleClass('hide')
