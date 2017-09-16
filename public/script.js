@@ -54,7 +54,6 @@ const countNumber = (No) => {
   )
 }
 
-
 $('#items-list').on('click', '#show-more', function(e) {
   $(e.target).parent().find('#details').toggleClass('hide')
 })
@@ -71,7 +70,10 @@ const postItem = (item) => {
   })
   .then(res => res.json())
   .then( data => {
-    appendItemName(data.id)
+    // appendItemName(data.id)
+    $('#items-list').empty()
+    $('#number').empty()
+    fetchAllItems()
   })
   .catch(error => console.log('Error posting link: ', error))
 }
