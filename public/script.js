@@ -88,11 +88,15 @@ $('#add-new').on('click', (e) => {
 })
 
 $('#sort').on('click', function(){
-  const items = $('.item')
+  const items = $('.garage-item')
 
   const sorted = items.sort((a,b) => {
-    return a.name.toLowerCase() > b.name.toLowerCase();
+    return $(a).find('.item').prop('name').toLowerCase() > $(b).find('.item').prop('name').toLowerCase();
   });
+
+  Object.keys(sorted).map(item => {
+    $('#items-list').append(sorted[item])
+  })
 
   $('#items-list').empty()
   $('#number').empty()
