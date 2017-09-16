@@ -36,9 +36,13 @@ const appendItemName = (item) => {
 }
 
 const appendAllItemNames = (items) => {
+  // const sortedList = items.sort((a, b) => {
+  //   return b.name < a.name
+  // })
   let counter = 0
   for (let i=0; i<items.length; i++){
     appendItemName(items[i])
+    // appendItemName(sortedList[i])
     counter ++
   }
   countNumber(counter)
@@ -83,17 +87,14 @@ $('#add-new').on('click', (e) => {
   reason.val('');
 })
 
-//sort alphabetically
-const sortAlphabetically = () => {
-  // const items = $('.garage-item')
-  const items = $('#items-list').find('.garage-item').get()
-  // ********************* not working ******************
-  console.log(items)
+$('#sort').on('click', function(){
+  const items = $('.item')
 
+  const sorted = items.sort((a,b) => {
+    return a.name.toLowerCase() > b.name.toLowerCase();
+  });
 
-
-}
-
-$('#sort').on('click', () => {
-  sortAlphabetically()
-})
+  $('#items-list').empty()
+  $('#number').empty()
+  appendAllItemNames(sorted)
+});
