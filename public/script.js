@@ -13,6 +13,7 @@ $('#close-door').on('click', () => {
   $('.img-container').fadeIn(3000);
 })
 
+//fetching items and appending them to page
 const fetchAllItems = () => {
   fetch('/api/v1/items')
   .then(res => res.json())
@@ -20,19 +21,6 @@ const fetchAllItems = () => {
     appendAllItemNames(data)
   })
   .catch(error => console.log('Error fetching items: ', error))
-}
-
-const appendItemName = (item) => {
-  $('#items-list').append(
-   `<div class="garage-item">
-      <button name="${item.name}" id='show-more' class="item">${item.name}</button>
-      <div id="details" class="hide">
-        <p><b>Reason for storing:</b> ${item.reason}</p>
-        <p><b>Level of cleanliness:</b> ${item.cleanliness}</p>
-     </div>
-    </div>
-   `
-  )
 }
 
 const appendAllItemNames = (items) => {
@@ -54,10 +42,27 @@ const countNumber = (No) => {
   )
 }
 
+const appendItemName = (item) => {
+  $('#items-list').append(
+   `<div class="garage-item">
+      <button name="${item.name}" id='show-more' class="item">${item.name}</button>
+      <div id="details" class="hide">
+        <p><b>Reason for storing:</b> ${item.reason}</p>
+        <p><b>Level of cleanliness:</b> ${item.cleanliness}</p>
+     </div>
+    </div>
+   `
+  )
+}
+
+
+
+//viewing item details
 $('#items-list').on('click', '#show-more', function(e) {
   $(e.target).parent().find('#details').toggleClass('hide')
 })
 
+//adding new item
 const postItem = (item) => {
   const itemName = $('#name').val();
   const reason = $('#reason').val();
@@ -89,6 +94,7 @@ $('#add-new').on('click', (e) => {
   reason.val('');
 })
 
+//sorting items
 $('#sort').on('click', function(){
   const items = $('.garage-item')
 
