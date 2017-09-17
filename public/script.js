@@ -39,7 +39,7 @@ const appendAllItemNames = (items) => {
 
 const countNumber = (No) => {
   $('#number').append(
-    `<p>${No}</p>`
+    `<p class="no">${No}</p>`
   )
 }
 
@@ -51,8 +51,8 @@ const appendItemName = (item) => {
         <p><b>Reason for storing:</b> ${item.reason}</p>
         <p id="update"><b>Level of cleanliness:</b> ${item.cleanliness}</p>
 
-        <div>
-          <label>Update Cleanliness:</label>
+        <div class="update-cleanliness">
+          <label><b>Update Cleanliness:</b></label>
           <select id="updated">
             <option value="sparkling">Sparkling</option>
             <option value="dusty">Dusty</option>
