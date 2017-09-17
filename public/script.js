@@ -81,15 +81,19 @@ $('#items-list').on('click', '#update-btn', function(e){
   })
   .then(res => res.json())
   .then( data => {
-  console.log(data)
+    updateCleanliness(data.data[0])
   })
   .catch(error => console.log('Error: ', error))
-//
 })
 
+const updateCleanliness = (data) => {
+  const replacementArea = $('#update').val(data);
+
+  replacementArea.replaceWith(`<p id="update"><b>Level of cleanliness:</b> ${data.cleanliness}</p>`)
+}
 
 
-//A count of the number of items per each value of cleanliness (i.e. 5 items are sparkling, 2 are dusty, 3 are rancid).
+//A count of the number of items per each value of cleanliness
 const countPerCleanliness = (items) => {
   let cleanliness = {
     sparkling: 0,
