@@ -45,16 +45,49 @@ const countNumber = (No) => {
 
 const appendItemName = (item) => {
   $('#items-list').append(
-   `<div class="garage-item">
+   `<div class="garage-item" id="${item.id}">
       <button name="${item.name}" id='show-more' class="item">${item.name}</button>
       <div id="details" class="hide">
         <p><b>Reason for storing:</b> ${item.reason}</p>
-        <p><b>Level of cleanliness:</b> ${item.cleanliness}</p>
+        <p id="update"><b>Level of cleanliness:</b> ${item.cleanliness}</p>
+
+        <div>
+          <label>Update Cleanliness:</label>
+          <select id="updated">
+            <option value="sparkling">Sparkling</option>
+            <option value="dusty">Dusty</option>
+            <option value="rancid">Rancid</option>
+          </select>
+          <button id="update-btn">Update</button>
+        </div>
+
      </div>
     </div>
    `
   )
 }
+
+//update cleanliness
+$('#items-list').on('click', '#update-btn', function(e){
+  const updatedStatus = $(e.target).parent().find('#updated').val()
+  const id = $(e.target).parent().parent().parent().prop('id')
+  console.log(id)
+
+// patch item
+  fetch(`/api/v1/items/${id}`, {
+    method: 'PATCH',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({cleanliness: updatedStatus})
+  })
+  .then(res => res.json())
+  .then( data => {
+  console.log(data)
+  })
+  .catch(error => console.log('Error: ', error))
+//
+})
+
+
 
 //A count of the number of items per each value of cleanliness (i.e. 5 items are sparkling, 2 are dusty, 3 are rancid).
 const countPerCleanliness = (items) => {
