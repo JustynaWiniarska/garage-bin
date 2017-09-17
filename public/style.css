@@ -105,3 +105,15 @@ h1 {
 .item:focus {
   outline: 2px solid #657d79;
 }
+
+.cleanliness-level {
+  margin-bottom: -10px;
+}
+
+.level-span {
+  margin-left: 20px;
+}
+
+.list-of-items {
+  margin-top: 40px;
+}

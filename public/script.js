@@ -34,6 +34,7 @@ const appendAllItemNames = (items) => {
     counter ++
   }
   countNumber(counter)
+  countPerCleanliness(items)
 }
 
 const countNumber = (No) => {
@@ -55,7 +56,30 @@ const appendItemName = (item) => {
   )
 }
 
+//A count of the number of items per each value of cleanliness (i.e. 5 items are sparkling, 2 are dusty, 3 are rancid).
+const countPerCleanliness = (items) => {
+  let cleanliness = {
+    sparkling: 0,
+    dusty: 0,
+    rancid: 0
+  }
 
+  const checkCleanliness = items.map((item) => {
+    cleanliness[item.cleanliness]++
+  })
+
+console.log(cleanliness)
+
+  $('#clean-level').append(
+    `<div>
+      <h4 class="cleanliness-level">Cleanliness levels:</h4>
+      <p><span class="level-span">Sparkling: </span>${cleanliness.sparkling}
+         <span class="level-span">Dusty: </span>${cleanliness.dusty}
+         <span class="level-span">Rancid: </span>${cleanliness.rancid}
+      </p>
+    </div>`
+  )
+}
 
 //viewing item details
 $('#items-list').on('click', '#show-more', function(e) {
