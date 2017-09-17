@@ -49,7 +49,7 @@ app.post('/api/v1/items', (request, response) => {
     cleanliness: request.body.cleanliness
   }
 
-  for(let requiredParameter of ['name']) {
+  for(let requiredParameter of ['name', 'cleanliness']) {
     if (!newItem[requiredParameter]) {
       return response.status(422).json({
         error: `Missing required parameter ${requiredParameter}`

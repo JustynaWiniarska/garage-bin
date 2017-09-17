@@ -68,8 +68,7 @@ const countPerCleanliness = (items) => {
     cleanliness[item.cleanliness]++
   })
 
-console.log(cleanliness)
-
+  $('#clean-level').empty();
   $('#clean-level').append(
     `<div>
       <h4 class="cleanliness-level">Cleanliness levels:</h4>
