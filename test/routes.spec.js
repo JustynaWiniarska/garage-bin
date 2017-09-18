@@ -131,7 +131,8 @@ describe('Client Routes', () => {
         chai.request(server)
         .post('/api/v1/items')
         .send({
-          reason: 'Storage'
+          reason: 'Storage',
+          cleanliness: 'Dusty'
         })
         .end((error, response) => {
           response.should.have.status(422);
