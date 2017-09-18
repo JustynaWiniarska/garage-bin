@@ -11,6 +11,8 @@ button, input {
 
 button {
   cursor: pointer;
+  background-color: #f2ead5;
+  border: 2px solid #966764;
 }
 
 h1 {
@@ -42,6 +44,10 @@ h1 {
   display: none;
 }
 
+#items-list {
+  margin-top: 25px;
+}
+
 /*form*/
 .add-item {
   display: flex;
@@ -60,8 +66,7 @@ h1 {
 #close-door {
   height: 40px;
   width: 200px;
-  background-color: #e2c57a;
-  border: 2px solid #966764;
+  background-color: #b9ccc8;
   padding: 5px;
 }
 
@@ -89,8 +94,6 @@ h1 {
 #add-new {
   margin-top: 20px;
   height: 40px;
-  background-color: #f2ead5;
-  border: 2px solid #966764;
 }
 
 .item {
@@ -99,9 +102,42 @@ h1 {
   padding: 10px;
   border: 1px solid #657d79;
   background-color: #b9ccc8;
-
 }
 
 .item:focus {
   outline: 2px solid #657d79;
+}
+
+.cleanliness-level {
+  margin-bottom: -10px;
+}
+
+.level-span {
+  margin-left: 20px;
+}
+
+.list-of-items {
+  margin-top: 40px;
+}
+
+.number {
+  margin-bottom: 10px;
+}
+
+.no {
+  color:  #966764;
+  font-weight: bold;
+  margin: 0;
+}
+
+#sort, #update-btn, #updated {
+  border: 1px solid #966764;
+}
+
+#updated {
+  height: 24px;
+}
+
+.update-cleanliness {
+  padding-bottom: 15px;
 }

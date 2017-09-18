@@ -49,7 +49,7 @@ app.post('/api/v1/items', (request, response) => {
     cleanliness: request.body.cleanliness
   }
 
-  for(let requiredParameter of ['name']) {
+  for(let requiredParameter of ['name', 'cleanliness']) {
     if (!newItem[requiredParameter]) {
       return response.status(422).json({
         error: `Missing required parameter ${requiredParameter}`
@@ -65,6 +65,27 @@ app.post('/api/v1/items', (request, response) => {
       response.status(500).json({ error })
   })
 });
+
+
+app.patch('/api/v1/items/:id', (request, response) => {
+  const newData = request.body;
+
+  database('items')
+    .where('id', request.params.id)
+    .update(newData, '*')
+    .then((data) => {
+      if (data.length) {
+        response.status(201).json({ data });
+      } else {
+        response.status(404).json({ error: 'There is no item under this id.' });
+      }
+    })
+    .catch((error) => {
+      response.status(500).json({ error });
+    });
+});
+
+
 
 app.listen(app.get('port'), () => {
   console.log(`The App is running on ${app.get('port')}.`);
