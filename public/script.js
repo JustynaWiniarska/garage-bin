@@ -71,7 +71,6 @@ const appendItemName = (item) => {
 $('#items-list').on('click', '#update-btn', function(e){
   const updatedStatus = $(e.target).parent().find('#updated').val()
   const id = $(e.target).parent().parent().parent().prop('id')
-  console.log(id)
 
 // patch item
   fetch(`/api/v1/items/${id}`, {
